@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 
-import {SliderBox} from 'react-native-image-slider-box'
+import { SliderBox } from "react-native-image-slider-box";
 
 import { Dimensions } from "react-native";
 
@@ -30,13 +30,13 @@ const DashboardCarousel = () => {
         ImageComponentStyle={{ borderRadius: 0 }}
         autoplay={true}
         circleLoop
-        parentWidth={width*0.97}
+        parentWidth={width * 0.97}
       />
     </View>
   );
 };
 
-export default DashboardCarousel;
+export default React.memo(DashboardCarousel);
 
 const styles = StyleSheet.create({
   img: {
