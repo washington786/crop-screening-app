@@ -72,10 +72,10 @@ const AccountSettings = () => {
 
         <Formik
           initialValues={{
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
-            city: address,
+            email: email||'',
+            firstName: firstName||'',
+            lastName: lastName||'',
+            city: address||''
           }}
           onSubmit={handleUpdate}
           validationSchema={update_valSchema}
