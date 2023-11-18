@@ -9,14 +9,17 @@ import ButtonsStyles from "../../styles/Buttons";
 import OTPTextView from "react-native-otp-textinput";
 import colors from "../../globals/Colors";
 import OTPStyles from "../../styles/OTPStyles";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
+import verifyOneTimePin from "../../hooks/useVerifyOTP";
+import SuccessDisplay from "../../components/auth/successDisplay";
 
 function ResetPasswordOTP() {
-  const navigation = useNavigation()
   const [otp, setOTp] = useState<String>();
 
   // timer: 30minutes * 60 seconds/minute = 1800
   const initialTime = 1800;
+
+  const { isLoading, message, verifyOtp } = verifyOneTimePin();
 
   const [time, setTime] = useState(initialTime);
 
@@ -26,9 +29,9 @@ function ResetPasswordOTP() {
     setOTp(code);
   }
 
-  function verifyOtp() {
-    console.log(otp);
-    navigation.replace("resetAccess");
+  function verifyOneTimePinMethod() {
+    const user_data = {email,otp}
+    verifyOtp(user_data);
   }
 
   useEffect(() => {
@@ -79,13 +82,17 @@ function ResetPasswordOTP() {
             {seconds.toString().padStart(2, "0")}
           </Paragraph>
           <Button
+            loading={isLoading}
+            disabled={isLoading}
             mode="contained"
             style={ButtonsStyles.contained}
             labelStyle={ButtonsStyles.labelContained}
-            onPress={verifyOtp}
+            onPress={verifyOneTimePinMethod}
           >
             Verify OTP
           </Button>
+
+          {message && <SuccessDisplay text={message} />}
         </InputWrapper>
       </AuthWhiteWrapper>
     </AuthWrapper>

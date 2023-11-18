@@ -1,7 +1,6 @@
 import React from "react";
 
 import Icons from "react-native-vector-icons/Feather";
-import InputWrapper from "../../components/auth/InputWrapper";
 import { Button, Paragraph } from "react-native-paper";
 import ButtonsStyles from "../../styles/Buttons";
 import colors from "../../globals/Colors";
@@ -12,15 +11,13 @@ import { useNavigation } from "@react-navigation/native";
 
 const ResetPasswordSuccess = () => {
   const navigation = useNavigation();
-  function goToLoginScreen(){
+  function goToLoginScreen() {
     navigation.replace("login");
   }
   return (
     <View style={ResetPasswordSuccessStyles.con}>
       <ResetWrapper>
         <Icons name="check-circle" size={70} color={colors.g_op6} />
-
-
 
         <Paragraph style={ResetPasswordSuccessStyles.txt}>
           You have Successfully reset your password. Please keep your password

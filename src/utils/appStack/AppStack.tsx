@@ -10,7 +10,7 @@ const AppStack = () => {
   return (
     <appStack.Navigator screenOptions={{ headerShown:false }}>
         <appStack.Screen name='auth' component={AuthStack}/>
-        <appStack.Screen name='app' component={BottomNavigation}/>
+        <appStack.Screen name='app' component={BottomNavigation} />
     </appStack.Navigator>
   )
 }
